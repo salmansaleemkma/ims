@@ -1,0 +1,37 @@
+{
+  "name": "ims",
+  "version": "1.0.0",
+  "description": "Inventory Management system",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salmansaleemkma/ims.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/salmansaleemkma/ims/issues"
+  },
+  "homepage": "https://github.com/salmansaleemkma/ims#readme",
+  "devDependencies": {
+    "babel-core": "^6.3.15",
+    "babel-loader": "^6.2.0",
+    "babel-preset-react": "^6.3.13",
+    "babelify": "^7.2.0",
+    "css-loader": "^0.23.0",
+    "hammerjs": "^2.0.4",
+    "jquery": "^2.1.4",
+    "node-libs-browser": "^0.5.3",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.9"
+  },
+  "dependencies": {
+    "file-loader": "^0.8.5"
+  }
+}
