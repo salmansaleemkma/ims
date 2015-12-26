@@ -1,8 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-
-require('materialize-css/dist/css/materialize.css');
-require('materialize-css/dist/js/materialize.js');
+var $ = require('jquery');
 
 var ProductList = React.createClass({
     getInitialState: function() {
