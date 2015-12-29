@@ -2,13 +2,48 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var $ = require('jquery');
 
+var Router = require('react-router').Router
+var Route = require('react-router').Route
+var Link = require('react-router').Link
+var browserHistory = require('react-router').browserHistory
+var IndexRoute = require('react-router').IndexRoute
+
+var Home = React.createClass({
+    render: function() {
+	return(<h1>Home content</h1>);
+    }
+});
+
+var DashBoard = React.createClass({
+    render: function() {
+	return (
+		<div>
+		<h1>-_-_-_-_-_-_Inventory Management System_-_-_-_-__-_-_</h1>
+		<ul>
+		<li><Link to="/">Dashboard</Link></li>
+		<li><Link to="/products">Products</Link></li>
+		<li><Link to="/orders">Orders</Link></li>
+		</ul>
+		{this.props.children}
+		</div>
+	);
+    }
+});
+
+var OrdersList = React.createClass({
+    render: function() {
+	return(<h1>Orders Coming soon</h1>);
+    }
+});
+
+	
 var ProductList = React.createClass({
     getInitialState: function() {
 	return {data: []};
     },
     componentDidMount: function() {
 	$.ajax({
-	    url:this.props.url,
+	    url: "http://localhost:5000/products",
 	    dataType: 'json',
 	    cache: false,
 	    success: function(data) {
@@ -142,5 +177,11 @@ var SearchedProduct = React.createClass({
 
 
 ReactDOM.render(
-    <ProductList url="http://localhost:5000/products" />,
+	<Router history={browserHistory}>
+	<Route path="/" component={DashBoard}>
+	<IndexRoute component={Home} />
+	<Route path="/products" component={ProductList} />
+	<Route path="/orders" component={OrdersList} />
+	</Route>
+	</Router>,
     document.getElementById('ims-app'));
