@@ -20,11 +20,9 @@ var ProductList = React.createClass({
     },
     render: function() {
 	return (
-	    <div className="row">
 	    <div className="productList">
-	    <h1 className="teal-text">Products</h1>
+	    <h1 >Products</h1>
 	    <Product data={this.state.data}></Product>
-	    </div>
 	    </div>
 	);
     }
@@ -37,7 +35,7 @@ var Product = React.createClass({
 	    if(product.item_name.toLowerCase().indexOf(queryText)!=-1) {
 		queryResult.push(product);
 	    }
-	    else if(product.item_description.toLowerCase().indexOf(queryText)!=-1){
+	    else if(product.item_description.indexOf(queryText)!=-1){
 		queryResult.push(product);
 	    }
 
@@ -77,17 +75,8 @@ var SearchBox = React.createClass({
     },
     render:function(){
 	return (
-	    <div className="row">
-	    <div className="col s6">
-	    <div className="input-field">
-	    <input type="search" ref="searchInput" value={this.props.query} onChange={this.doSearch}/>
-	    <label>search</label>
-	    <i className="material-icons">search</i>
-	    </div>
-	    </div>
-	    <div className="col s4">
-	    <a className="btn-floating btn-small waves-effect waves-light"><i className="material-icons" title="Add New Product">add</i></a>
-	    </div>
+	    <div>
+	    <input type="search" placeholder="search products..." ref="searchInput" value={this.props.query} onChange={this.doSearch}/>
 	    </div>
 	    
 	);
@@ -99,41 +88,20 @@ var SearchedProduct = React.createClass({
     render: function() {
 
 	var productNodes = this.props.data.map(function (product) {
-	    if(product.item_units < 150){
-		return (
-		    <div className="col s6">
-		    <div className="card-panel hoverable #bcaaa4 brown lighten-3">
-		    <div className="product">
-		    <span className="right teal-text">{product.item_units} units</span>
-		    <h5 className="truncate">{product.item_name}</h5>
-		    <p className="truncate">{product.item_description}</p>
-		    <span className="right chip">{product.item_type}</span>
+	    return (
+		    <div className="product card">
+		    <h5>{product.item_name}</h5>
+		    <p>{product.item_units} units </p>
+		    <p>{product.item_description}</p>
+		    <p>{product.item_type}</p>
 		    <b>Rs.</b>{product.item_price} per unit.<br/>
 		    </div>
-		    </div>
-		    </div>
-		);
-
-	    }
-	    else return (
-		<div className="col s6">
-		<div className="card-panel hoverable">
-		<div className="product">
-		<span className="right teal-text">{product.item_units} units</span>
-		<h5 className="truncate">{product.item_name}</h5>
-		<p className="truncate">{product.item_description}</p>
-		<span className="right chip">{product.item_type}</span>
-		<b>Rs.</b>{product.item_price} per unit.<br/>
-		</div>
-		</div>
-		</div>
-
 	    );
 	});
 	return (
-	    <div className="searching-product">
-	    <p>Result: <span className="teal-text">{ this.props.data.length }</span> items found</p>
-	    {productNodes}
+		<div className="product-result">
+		<p>Result: <span>{ this.props.data.length }</span> items found</p>
+		{productNodes}
 	    </div>
 	);
     }

@@ -4,15 +4,26 @@ var Link = require('react-router').Link
 var DashBoard = React.createClass({
     render: function() {
 	return (
-		<div>
+		<body>
+		<header>
 		<h1>Inventory Management System</h1>
-		<ul>
-		<li><Link to="/">Dashboard</Link></li>
-		<li><Link to="/products">Products</Link></li>
-		<li><Link to="/orders">Orders</Link></li>
-		</ul>
+
+		<nav>
+		<Link to="/"><li>Dashboard</li></Link>
+		<Link to="products"><li>Products</li></Link>
+		<Link to="orders"><li>Orders</li></Link>
+		<li className="active">Account Settings</li>
+		</nav>
+		</header>
+
+		<main>
 		{this.props.children}
-		</div>
+		</main>
+		<footer>
+		IMS &copy; 2016.
+	    </footer>
+
+		</body>
 	);
     }
 });

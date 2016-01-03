@@ -11,6 +11,9 @@ var OrdersList = require('./orders')
 var Home = require('./mainpage')
 var ProductList = require('./products')
 
+require('./../css/style.css')
+document.body.style.backgroundImage = "url('./../css/congruent_pentagon.png')";
+
 ReactDOM.render(
 	<Router history={browserHistory}>
 	<Route path="/" component={DashBoard}>
